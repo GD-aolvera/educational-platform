@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven { url "https://repo1.maven.org/maven2" }
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.5'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id "org.openapi.generator" version "6.2.1"
+}
+
+apply plugin: 'org.openapi.generator'
+apply from: "openApi.gradle"
+
+group = 'gd.ao8a'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "org.openapitools:openapi-generator-gradle-plugin:6.4.0"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
