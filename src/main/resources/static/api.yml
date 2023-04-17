@@ -1,0 +1,8 @@
+openapi: 3.0.0
+info:
+  title: Grid Dynamics Internship -  Educational Platform
+  description: |-
+    Main back-end application for a fictional educational platform developed in Java with Spring. The project aims to showcase the skills acquired through the Grid Dynamics Internship.
+  version: 0.0.1
+servers:
+  - url: https://localhost:8080
