@@ -6,3 +6,50 @@ info:
   version: 0.0.1
 servers:
   - url: https://localhost:8080
+tags:
+  - name: Course Materials
+    description: Available endpoints related to course materials
+  - name: Students
+    description: Available endpoints related to students
+  - name: Forum Posts
+    description: Available endpoints related to forum posts
+  - name: Private Messages
+    description: Available endpoints related to private messages
+  - name: Admin
+    description: Available endpoints related to administrative tasks
+  - name: Auth
+    description: Available endpoints related to authentication/authorization
+paths:
+  /courses:
+    get:
+      tags:
+        - Course Materials
+      summary: Get all course materials
+      description: 'Should provide a list of available course materials'
+      operationId: getAllCourses
+      responses:
+        '200':
+          description: All course materials successfully fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseMaterialsResponse'
+components:
+  schemas:
+    CourseMaterialsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier in DB
+          example: 123e4567-e89b-12d3-a456-4266141742334
+        name:
+          type: string
+          description: Name of the Course
+          example: 'SpringBoot 101'
+        content:
+          type: string
+          description: Lecture content
+          example: 'A text describing the topic of the course'
